@@ -127,12 +127,28 @@
                             
                		}
 		}).then(function(response) {
-               		console.log(response)
-		       // $("#obsDiv").html(response);
-			$.each(response, function(index, value){
-				$("#obvDiv").append(value.text.div);
-			})
+               	
+				var tblStart = "<table style='width:100%'>"
+				var tblEnd = "</table>"
+				var tblHeader = "<tr><th>Name</th><th>Value</th><th>Date</th></tr>"
+				var tblBody = ""
+				$.each(response, function(index, value){
+					var rowStart = "<tr>"
+					var rowEnd = "</tr>"
+					var name = "<td>" + value.code.text +"</td>";
+					var valueQ ="";
+					var datev = "<td>" + value.effectiveDateTime +"</td>";
+					if(value.valueQuantity !== undefined){
+						valueQ = "<td>" + value.valueQuantity.value +"</td>"
+					}else{
+						valueQ = "<td>" + "" +"</td>"
+					}
+					
+					tblBody+= rowStart + name+valueQ+datev + rowEnd;
+				});
+
 				
+				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
 				
 	});
 
