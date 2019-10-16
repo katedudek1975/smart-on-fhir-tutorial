@@ -129,12 +129,9 @@
 		}).then(function(response) {
                		console.log(response)
 		       // $("#obsDiv").html(response);
-			$.each(response, function(index, value)
-			       {
-			      console.log("index "+index+ "value " +value.text.div); 
+			$.each(response, function(index, value){
 				$("#obsDiv").append(value.text.div);
-				
-			}
+			})
 				
 				
 	});
