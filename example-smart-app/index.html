@@ -114,6 +114,11 @@
 			//var encounterId = smart.encounter.id;
 			
 			patientApi.fetchAll({
+        			type: 'Patient',
+        			console.log(response);
+      				})
+			
+			patientApi.fetchAll({
                type: 'Observation',
                query: {
                               category: {
