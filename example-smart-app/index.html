@@ -106,7 +106,21 @@
 		var retVal = ret_str.replace(/%MM/,monStr).replace(/%M/,(this.getMonth()+1)).replace(/%dd/,dateStr).replace(/%d/,this.getDate()).replace(/%yyyy/,this.getFullYear()).replace(/%yy/,yearStr).replace(/%HH/,HourStr).replace(/%H/,this.getHours()).replace(/%hh/,hourStr).replace(/%h/,shortHours).replace(/%mm/,minuteStr).replace(/%m/,this.getMinutes()).replace(/%ss/,secStr).replace(/%s/,this.getSeconds()).replace(/%p/,amPM).replace(/%P/,amPM.toUpperCase()).replace(/%b/,SHORT_MONTH[this.getMonth()]).replace(/%B/,LONG_MONTH[this.getMonth()]).replace(/%F/,LONG_DAY[this.getDay()]).replace(/%f/,SHORT_DAY[this.getDay()]);
 		return (isNaN(this.getTime()))?"Invalid Date":retVal;
 	};
-	function ready(smart) {
+	
+	  
+	function getAge(dateString) {
+	    var today = new Date();
+	    var birthDate = new Date(dateString);
+	    var age = today.getFullYear() - birthDate.getFullYear();
+	    var m = today.getMonth() - birthDate.getMonth();
+	    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        	age--;
+   		 }
+   	 return age;
+	}	
+		
+		
+		function ready(smart) {
 		if (typeof smart.patient === "object") {
 			console.log(smart);
 			var patientApi = smart.patient.api;
@@ -116,6 +130,8 @@
         			response=response[0];
 				$("#demo-name").html(response.name[0].text)
 				$("#demo-dob").html(response.birthDate)
+				var age3 = this.getAge(response.birthDate)
+				$("#demo-age").html(age3)
              			$("#demo-gender").html(response.gender)
      			 })
 			
