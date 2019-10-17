@@ -113,53 +113,6 @@
 			var patientApi = smart.patient.api;
 			//var encounterId = smart.encounter.id;
 			
-			patientApi.fetchAll({type: 'Patient',
-
-				}).then(function(response) {   
-      					console.log(response);
-			        }
-			
-			patientApi.fetchAll({
-               type: 'Observation',
-               query: {
-                              category: {
-                                             $or: ["laboratory","vital-signs"]
-                              },
-                              code: {
-                                             $or: ['http://loinc.org|29463-7', 'http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-                                             'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                                             'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
-                              }
-                            
-               		}
-		}).then(function(response) {
-               	
-				var tblStart = "<table style='width:100%'>"
-				var tblEnd = "</table>"
-				var tblHeader = "<tr><th>Name</th><th>Value</th><th>Date</th></tr>"
-				var tblBody = ""
-				$.each(response, function(index, value){
-					var rowStart = "<tr>"
-					var rowEnd = "</tr>"
-					var name = "<td>" + value.code.text +"</td>";
-					var valueQ ="";
-					var datev = "<td>" + value.effectiveDateTime +"</td>";
-					if(value.valueQuantity !== undefined){
-						valueQ = "<td>" + value.valueQuantity.value +"</td>"
-					}else{
-						valueQ = "<td>" + "" +"</td>"
-					}
-					
-					tblBody+= rowStart + name+valueQ+datev + rowEnd;
-				});
-
-				
-				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
-				
-	}};
-
-			
-			
 		}
 	}
 	function notReady(response) {
