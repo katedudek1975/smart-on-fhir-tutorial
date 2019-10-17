@@ -114,9 +114,7 @@
 			patientApi.fetchAll({type: 'Patient'}).then(function(response){
         			console.log(response);
         			response=response[0];
-				var name2=response.name
-				var name3=name2.text
-				$("#demo-name").html(name3)
+				$("#demo-name").html(response.name[0].text)
 				$("#demo-dob").html(response.birthDate)
              			$("#demo-gender").html(response.gender)
      			 })
