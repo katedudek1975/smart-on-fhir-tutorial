@@ -116,7 +116,8 @@
 			patientApi.fetchAll({type: 'Patient',
 
 				}).then(function(response) {   
-      					console.log(response)},
+      					console.log(response);
+			        }
 			
 			patientApi.fetchAll({
                type: 'Observation',
@@ -155,7 +156,7 @@
 				
 				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
 				
-	});
+	}};
 
 			
 			
