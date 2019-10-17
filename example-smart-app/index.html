@@ -14,7 +14,6 @@
 		.chld-mo-demobar li:nth-of-type(1) {margin-right:30px;font-size:1.1em;font-weight:bold;}
 		.chld-mo-demobar dt,.chld-mo-demobar dd {white-space:nowrap;margin:0;}
 		.chld-mo-demobar li dt {display:inline;width:30%;padding-right:6px;}
-		.chld-mo-demobar li dt.demo-data {display:none;}
 		.chld-mo-demobar dd {width:70%;display:inline;}
 		.chld-mo-demobar li:nth-last-of-type(1) dd {font-weight:bold;}
 	</style>
@@ -25,8 +24,8 @@
 		<div id="demoBar">
 			<ul class='chld-mo-demobar'>
 				<li><dt class='demo-data'>Name:</dt><dd id='demo-name'>&nbsp;</dd></li>
-				<li><dt>Gender:</dt><dd id='demo-gender'>&nbsp;</dd></li>
-				<li><dt>DOB:</dt><dd id='demo-dob'>&nbsp;</dd></li>
+				<li><dtclass='demo-data'>Gender:</dt><dd id='demo-gender'>&nbsp;</dd></li>
+				<li><dtclass='demo-data'>DOB:</dt><dd id='demo-dob'>&nbsp;</dd></li>
 				<li><dt class='demo-data'>Age:</dt><dd id='demo-age'>&nbsp;</dd></li>
 				<li><dt>MRN:</dt><dd id='demo-mrn'>&nbsp;</dd></li>
 				<li><dt>FIN:</dt><dd id='demo-fin'>&nbsp;</dd></li>
@@ -115,8 +114,8 @@
 			patientApi.fetchAll({type: 'Patient'}).then(function(response){
         			console.log(response);
         			response=response[0];
-				$(#demo-dob)=response.birthDate
-             			$(#demo-gender)=response.gender
+				$("#demo-dob").html(response.birthDate)
+             			$("#demo-gender").html(response.gender)
      			 })
 			
 		}
