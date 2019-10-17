@@ -114,7 +114,8 @@
 			//var encounterId = smart.encounter.id;
 			
 			patientApi.fetchAll({
-        			type: 'Patient',
+        			type: 'Patient'}).then(function(response)
+				
         			console.log(response);
       				})
 			
