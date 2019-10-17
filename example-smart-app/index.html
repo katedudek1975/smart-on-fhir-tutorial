@@ -130,7 +130,7 @@
         			response=response[0];
 				$("#demo-name").html(response.name[0].text)
 				$("#demo-dob").html(response.birthDate)
-				var age3 = this.getAge(response.birthDate)
+				var age3 = getAge(response.birthDate)
 				$("#demo-age").html(age3)
              			$("#demo-gender").html(response.gender)
      			 })
